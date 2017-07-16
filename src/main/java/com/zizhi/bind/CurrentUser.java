@@ -37,6 +37,6 @@ public @interface CurrentUser {
      *sss
      * @return
      */
-    String value() default Contants.CURRENT_USER;
+    String value() default Contants.CURRENT_ACCOUNT;
 
 }

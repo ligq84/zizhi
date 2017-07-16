@@ -44,15 +44,13 @@ public class NoSesstionHttpMethodPermissionFilter extends HttpMethodPermissionFi
 				getSubject(request, response).login(token);
 				// 如果认证成功，则增加request的属性，用于@CurrentUser注解使用
 				Account account = token.getAccount();
-				request.setAttribute(Contants.CURRENT_USER, account);
-
+				request.setAttribute(Contants.CURRENT_ACCOUNT, account);
 			} catch (AuthenticationException e) {
 				logger.info("认证失败! "+e.getClass().getSimpleName());
 			} catch (Exception e) {
 				logger.info("其他认证失败! "+e.getClass().getSimpleName());
 				e.printStackTrace();
 			}
-
 		}
 		boolean result = super.isAccessAllowed(request, response, mappedValue);
 		logger.info("restult:"+result);

@@ -1,7 +1,7 @@
 package com.zizhi.filter;
 
-import java.io.IOException;
-import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -9,9 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.IOException;
+import java.util.Map;
 
 public class RequestLogFilter extends AbstractFilter {
 
@@ -52,18 +51,12 @@ public class RequestLogFilter extends AbstractFilter {
 		logger.info("Accept:{}",request.getHeader("Accept"));
 		logger.info("Content-Type:{}",request.getHeader("Content-Type"));
 		logger.info("------开始过滤--------");
-
 		long before = System.currentTimeMillis();
 		logger.info("拦截到请求:{} : {}{}", menthod,url,getParamsString(request.getParameterMap()));
-
-
 		chain.doFilter(request, response);
 		long after = System.currentTimeMillis();
 		logger.info("请求结果:" + url + " status:" + response.getStatus());
 		logger.info("花费时间：" + (after - before) + "ms");
-
-		
-
 		logger.info("------过滤结束---------\n");
 
 	}

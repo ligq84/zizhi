@@ -10,43 +10,21 @@ package com.zizhi.jopo;
  *
  */
 public class UserPrincipal {
-	
-	
-	
 
 	private String username;
+	private PrincipType principType;
 
-	/**
-	 * <p>
-	 * Title:
-	 * </p>
-	 * <p>
-	 * Description:
-	 * </p>
-	 * 
-	 * @param username
-	 * @param principType
-	 */
+
 	public UserPrincipal(String username, PrincipType principType) {
 		super();
 		this.username = username;
 		this.principType = principType;
 	}
 
-	/**
-	 * <p>
-	 * Title:
-	 * </p>
-	 * 构造一个类型为guest的身份
-	 * <p>
-	 * Description:
-	 * </p>
-	 */
 	public UserPrincipal() {
 		this("", PrincipType.USER);
 	}
 
-	private PrincipType principType;
 
 	public enum PrincipType {
 		USER("user"), ADMIN("admin");
@@ -56,14 +34,6 @@ public class UserPrincipal {
 			this.roleName = roleName;
 		}
 
-		/**
-		 * 
-		 * @Title: getRoleName
-		 * @Description 我们都是
-		 * @Param
-		 * @Return String
-		 * @Throws
-		 */
 		public String getRoleName() {
 			return roleName;
 		}

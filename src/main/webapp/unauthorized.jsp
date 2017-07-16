@@ -13,11 +13,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>index</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="WEB-INF/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
-hello welconnom
-<script src="js/bootstrap.min.js"></script>
+没有权限访问
+<script src="WEB-INF/js/bootstrap.min.js"></script>
 </body>
 </html>

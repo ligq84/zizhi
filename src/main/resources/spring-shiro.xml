@@ -41,6 +41,8 @@
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<!-- 调用我们配置的权限管理器 -->
 		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login.jsp"></property>
+		<property name="unauthorizedUrl" value="/unauthorized.jsp"/>
 		<property name="filters">
 			<map>
 				<!-- 将重写的rest覆盖系统rest -->
@@ -49,7 +51,19 @@
 		</property>
 		<property name="filterChainDefinitions">
 			<value>
-				/users/**=noSessionCreation,rest
+				<!--登录请求-->
+				/account/login** = anon
+				<!--登录页跳转-->
+				/login.jsp** = anon
+				<!--验证码-->
+				/account/validateCode** = anon
+
+				<!--对静态资源设置匿名访问-->
+				/images/**=anon
+				/js/**=anon
+				/css/**=anon
+
+				/** = authc
 			</value>
 		</property>
 	</bean>

@@ -1,6 +1,8 @@
 package com.zizhi.secure.realm;
 
 import com.zizhi.jopo.UserPrincipal;
+import com.zizhi.model.Account;
+import com.zizhi.service.AccountService;
 import org.apache.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -8,9 +10,11 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.crypto.hash.Sha512Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @Auth liguoqiang
@@ -21,33 +25,32 @@ import org.apache.shiro.subject.SimplePrincipalCollection;
 public class AccountRealm extends AuthorizingRealm {
     private static Logger logger = Logger.getLogger(AccountRealm.class);
 
+    @Autowired
+    private AccountService  accountService;
+
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-
         AccountToken accountToken = (AccountToken) token;
-
         UserPrincipal userPrincipal = accountToken.getUserPrincipal();
-
         String pass = accountToken.getPassword();
-
-		/*User user = userService.getUserByPhonePass(userPrincipal.getUsername(),
-				pass);
-
-		if (user == null) {
-			throw new AccountException();
-		}*/
-
-        accountToken.setAccount(null);
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo();
-        SimplePrincipalCollection simplePrincipalCollection = new SimplePrincipalCollection();
-        simplePrincipalCollection.add(userPrincipal, getName());
-        authenticationInfo.setPrincipals(simplePrincipalCollection);
-        authenticationInfo.setCredentials(pass);
-        logger.info("认证成功!!! principalls:" + userPrincipal + " credentiasl:"
-                + pass);
-
-        return authenticationInfo;
-
+        if(null!=userPrincipal && null != userPrincipal.getUsername()){
+            SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo();
+            Account account  = accountService.selectAccountByName(userPrincipal.getUsername());
+            if(null != account){
+                String salt = account.getAccountId()+"#"+account.getCreatedTime();
+                String encodedPassword =new Sha512Hash(accountToken.getPassword(), salt, 32).toBase64();
+                if(encodedPassword.equals(account.getAccountPassword())){
+                    accountToken.setAccount(account);
+                    SimplePrincipalCollection simplePrincipalCollection = new SimplePrincipalCollection();
+                    simplePrincipalCollection.add(userPrincipal, getName());
+                    authenticationInfo.setPrincipals(simplePrincipalCollection);
+                    authenticationInfo.setCredentials(pass);
+                    logger.info("认证成功!!! principalls:" + userPrincipal + " credentiasl:" + pass);
+                    return authenticationInfo;
+                }
+            }
+        }
+        return null;
     }
 
     @Override
@@ -79,8 +82,7 @@ public class AccountRealm extends AuthorizingRealm {
                 authorizationInfo.addStringPermission("admin:*");
                 break;
         }
-        logger.info("authrizations: Roles:" + authorizationInfo.getRoles()
-                + " permesins" + authorizationInfo.getStringPermissions());
+        logger.info("authrizations: Roles:" + authorizationInfo.getRoles() + " permesins" + authorizationInfo.getStringPermissions());
 
         return authorizationInfo;
     }

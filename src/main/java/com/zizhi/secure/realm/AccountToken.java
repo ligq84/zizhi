@@ -54,8 +54,7 @@ public class AccountToken implements AuthenticationToken {
 
     @Override
     public String toString() {
-        return "AccountToken [principal=" + userPrincipal + ", password="
-                + password + "]";
+        return "AccountToken [principal=" + userPrincipal + ", password=" + password + "]";
     }
 
     @Override

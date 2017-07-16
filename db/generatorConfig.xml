@@ -42,7 +42,7 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>-->
 
-        <javaModelGenerator targetPackage="${modelPackage}" targetProject="${src_main_java}"/>
+        <javaModelGenerator targetPackage="${modelPackage}" targetProject="${src_main_java}" />
 
         <sqlMapGenerator targetPackage="${sqlMapperPackage}"  targetProject="${src_main_resources}"/>
 
@@ -52,7 +52,9 @@
             <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
         <!--</table>-->
         <table  tableName="usr_account"  domainObjectName="Account">
+            <property name="useActualColumnNames" value="false" />
             <generatedKey column="account_Id" sqlStatement="Mysql" identity="true"/>
         </table>
+
     </context>
 </generatorConfiguration>
