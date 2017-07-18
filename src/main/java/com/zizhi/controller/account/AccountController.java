@@ -57,6 +57,7 @@ public class AccountController {
                 currentUser.login(token);
                 // 如果认证成功，则增加request的属性，用于@CurrentUser注解使用
                 //Account account = token.getAccount();
+                modelAndView.setViewName("index");
             } catch (AuthenticationException e) {
                 logger.info("认证失败! "+e.getClass().getSimpleName());
                 modelAndView.setViewName("redirect:/login.jsp");
@@ -67,9 +68,8 @@ public class AccountController {
                 modelAndView.setViewName("redirect:/login.jsp");
                 modelAndView.addObject("result","{\"mesg\":\"登录异常！\"}");
             }
-
         }
-        modelAndView.setViewName("index");
+
         return modelAndView;
     }
 

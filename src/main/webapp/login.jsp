@@ -6,19 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>资质登录</title>
-    <link href="WEB-INF/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <script src="/js/jquery-3.2.1.slim.min.js"></script>
 </head>
 <body>
-    <form action="/account/login" method="post">
-        <input type="text" name="username" /><br/>
-        <input type="password" name="password" /><br/>
-        <input type="text" id="code" name="code"  style="width:100px;"/>
-        <img id="imgObj" alt="验证码" src="/account/validateCode" onclick="changeImg()"/>
-        <a href="#" onclick="changeImg()">换一张</a><br/>
-        <input type="submit" name="登录"/>
-    </form>
-<script src="/js/bootstrap.min.js"></script>
+    <div class="container">
+        <h2>趣逛科技资质管理系统</h2>
+        <form action="/account/login" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-3">
+                    <input type="text"  class="form-control" name="username" id="username" placeholder="用户名"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-3">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="code" class="col-sm-2 control-label">验证码</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="code" id="code" placeholder="验证码">
+                </div>
+                <div class="col-sm-2">
+                    <img id="imgObj" alt="验证码" src="/account/validateCode" onclick="changeImg()"/>
+                </div>
+                <%--<div class="col-sm-1">--%>
+                    <%--<a href="#" onclick="changeImg()">换一张</a>--%>
+                <%--</div>--%>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit"class="btn btn-default"  name="登录"/>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
 <script type="text/javascript">
     // 刷新图片
     function changeImg() {
@@ -41,5 +70,7 @@
         return url;
     }
 </script>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

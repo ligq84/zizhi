@@ -13,6 +13,8 @@ account_password VARCHAR(100) DEFAULT'' COMMENT'登录密码',
 account_status VARCHAR(2) DEFAULT'0' COMMENT'用户状态 0启用 1停用',
 created_time timestamp not null default current_timestamp COMMENT'创建时间'
 )engine=INNODB auto_increment=10001;
+INSERT INTO usr_account(account_phone,account_name,account_login,account_password)
+VALUES('13524446578','管理员','zzadmin','123456');
 
 -- 权限表
 DROP TABLE IF EXISTS usr_permission;

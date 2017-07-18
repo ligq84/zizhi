@@ -10,7 +10,6 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.crypto.hash.Sha512Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
@@ -34,12 +33,13 @@ public class AccountRealm extends AuthorizingRealm {
         UserPrincipal userPrincipal = accountToken.getUserPrincipal();
         String pass = accountToken.getPassword();
         if(null!=userPrincipal && null != userPrincipal.getUsername()){
-            SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo();
+
             Account account  = accountService.selectAccountByName(userPrincipal.getUsername());
             if(null != account){
                 String salt = account.getAccountId()+"#"+account.getCreatedTime();
-                String encodedPassword =new Sha512Hash(accountToken.getPassword(), salt, 32).toBase64();
-                if(encodedPassword.equals(account.getAccountPassword())){
+                //String encodedPassword =new Sha512Hash(accountToken.getPassword(), salt, 32).toBase64();
+                if(accountToken.getPassword().equals(account.getAccountPassword())){
+                    SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo();
                     accountToken.setAccount(account);
                     SimplePrincipalCollection simplePrincipalCollection = new SimplePrincipalCollection();
                     simplePrincipalCollection.add(userPrincipal, getName());

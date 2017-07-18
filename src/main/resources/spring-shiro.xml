@@ -24,9 +24,9 @@
 	<!-- 安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="accountRealm" />
-		<property name="subjectDAO.sessionStorageEvaluator.sessionStorageEnabled" value="false" />
+		<!--<property name="subjectDAO.sessionStorageEvaluator.sessionStorageEnabled" value="false" />-->
 		<!-- <property name="subjectFactory" ref="subjectFactory" /> -->
-		<property name="sessionManager" ref="sessionManager" />
+		<!--<property name="sessionManager" ref="sessionManager" />-->
 	</bean>
 
 	<!-- 相当于调用SecurityUtils.setSecurityManager(securityManager) -->
