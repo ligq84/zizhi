@@ -35,7 +35,8 @@ public class AccountController {
     private AccountService accountService;
 
     @RequestMapping("/login")
-    public ModelAndView Login(@RequestParam String username, @RequestParam String password, @RequestParam String code, HttpServletRequest request){
+    public ModelAndView Login(@RequestParam String username, @RequestParam String password, @RequestParam String code,@RequestParam String companycode,
+                              HttpServletRequest request){
         ModelAndView modelAndView = new ModelAndView();
         AccountToken token = new AccountToken();
         String sessionCode = null == request.getSession(true).getAttribute("checkcode")?"":request.getSession(true).getAttribute("checkcode").toString();

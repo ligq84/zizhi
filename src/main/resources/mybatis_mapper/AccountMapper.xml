@@ -6,6 +6,7 @@
       WARNING - @mbg.generated
     -->
     <result column="account_Id" jdbcType="INTEGER" property="accountId" />
+    <result column="company_Id" jdbcType="INTEGER" property="companyId" />
     <result column="account_phone" jdbcType="VARCHAR" property="accountPhone" />
     <result column="account_name" jdbcType="VARCHAR" property="accountName" />
     <result column="account_login" jdbcType="VARCHAR" property="accountLogin" />

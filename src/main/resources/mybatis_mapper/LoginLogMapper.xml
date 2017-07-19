@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zizhi.mapper.LoginLogMapper">
+  <resultMap id="BaseResultMap" type="com.zizhi.model.LoginLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="log_Id" jdbcType="INTEGER" property="logId" />
+    <result column="company_Id" jdbcType="INTEGER" property="companyId" />
+    <result column="account_login" jdbcType="VARCHAR" property="accountLogin" />
+    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
+    <result column="login_Ip" jdbcType="VARCHAR" property="loginIp" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
+  </resultMap>
+</mapper>

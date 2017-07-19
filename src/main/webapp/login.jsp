@@ -24,7 +24,13 @@
             <div class="form-group">
                 <label for="password" class="col-sm-2 control-label">密码</label>
                 <div class="col-sm-3">
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="companycode" class="col-sm-2 control-label">公司编码</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" name="companycode" id="companycode" placeholder="公司编码">
                 </div>
             </div>
             <div class="form-group">

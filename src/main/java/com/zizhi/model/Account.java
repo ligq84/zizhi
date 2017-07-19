@@ -1,16 +1,19 @@
 package com.zizhi.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
 import java.util.Date;
+import javax.persistence.*;
 
 @Table(name = "usr_account")
 public class Account {
     @Column(name = "account_Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountId;
+
+    /**
+     * 公司Id
+     */
+    @Column(name = "company_Id")
+    private Integer companyId;
 
     /**
      * 手机号码
@@ -60,6 +63,24 @@ public class Account {
      */
     public void setAccountId(Integer accountId) {
         this.accountId = accountId;
+    }
+
+    /**
+     * 获取公司Id
+     *
+     * @return company_Id - 公司Id
+     */
+    public Integer getCompanyId() {
+        return companyId;
+    }
+
+    /**
+     * 设置公司Id
+     *
+     * @param companyId 公司Id
+     */
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 
     /**
