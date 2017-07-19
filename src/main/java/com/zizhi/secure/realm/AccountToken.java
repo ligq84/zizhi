@@ -14,7 +14,7 @@ public class AccountToken implements AuthenticationToken {
     private UserPrincipal userPrincipal;
 
     private String password;
-
+    private String companyCode;
     private Account account;
 
     public AccountToken() {
@@ -78,5 +78,13 @@ public class AccountToken implements AuthenticationToken {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public String getCompanyCode() {
+        return companyCode;
+    }
+
+    public void setCompanyCode(String companyCode) {
+        this.companyCode = companyCode;
     }
 }

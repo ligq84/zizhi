@@ -17,10 +17,9 @@ public class AccountService extends BaseService{
     @Autowired
     private AccountMapper accountMapper;
 
-    public Account selectAccountByName(String name){
-        Account account  = new Account();
-        account.setAccountLogin(name);
-        return (Account) accountMapper.selectOne(account);
+    //登录 根据公司编号和登录账号 查找用户信息
+    public Account selectAccountByName(String name,String companyCode){
+        return accountMapper.selectAccountByName(name,companyCode);
     }
 
 }

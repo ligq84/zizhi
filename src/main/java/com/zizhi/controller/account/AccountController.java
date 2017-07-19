@@ -51,6 +51,7 @@ public class AccountController {
             token.setPrincipal(new UserPrincipal(username, UserPrincipal.PrincipType.USER));
             Subject currentUser = SecurityUtils.getSubject();
             token.setPassword(password);
+            token.setCompanyCode(companycode);
             if (currentUser.isAuthenticated()) {//如果当前已经有人登录，先登出
                 currentUser.logout();
             }
