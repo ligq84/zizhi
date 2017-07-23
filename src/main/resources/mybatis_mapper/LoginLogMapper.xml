@@ -5,11 +5,11 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="log_Id" jdbcType="INTEGER" property="logId" />
-    <result column="company_Id" jdbcType="INTEGER" property="companyId" />
-    <result column="account_login" jdbcType="VARCHAR" property="accountLogin" />
-    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
-    <result column="login_Ip" jdbcType="VARCHAR" property="loginIp" />
-    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
+    <result column="logId" jdbcType="INTEGER" property="logId" />
+    <result column="companyId" jdbcType="INTEGER" property="companyId" />
+    <result column="accountLogin" jdbcType="VARCHAR" property="accountLogin" />
+    <result column="accountName" jdbcType="VARCHAR" property="accountName" />
+    <result column="loginIp" jdbcType="VARCHAR" property="loginIp" />
+    <result column="loginTime" jdbcType="TIMESTAMP" property="loginTime" />
   </resultMap>
 </mapper>

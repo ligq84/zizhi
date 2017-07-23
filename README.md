@@ -49,7 +49,7 @@ Eclipse确实强大，但 [Intellij Idea][1] 更智能，强烈推荐 **Idea**
 cd ssm-easy-template/
 
 # 初始化数据库,将db/migration目录下sql迁移到本地数据库
-./gradlew flywayMigrate
+gradle flywayMigrate
 
 # jetty启动项目
 ./gradlew  appStart
@@ -69,7 +69,8 @@ curl  http://localhost:8080/users
 ### 详细修改
 
 #### 利用[mybatis-generator(MBG)][6] 生成`model/mapper/mapper.xml`文件
-Mybatis考虑到手写XML文件的繁琐，因此开发了MBG工具，通用Mapper这个项目再次简化了mybatis的生成代码数量。ssm-easy-template把mybatis generator放在`build.gradle`中，封装成一个`Gradle Task`。
+Mybatis考虑到手写XML文件的繁琐，因此开发了MBG工具，通用Mapper这个项目再次简化了mybatis的生成代码数量。ssm-easy-template把mybatis generator放在`build.gradle`中，
+封装成一个`Gradle Task`。
 
  * **修改generator配置文件**: 打开`gradle.propertis`文件,修改生成信息(数据库信息在`src/main/resources/db-mysql.properties`)，默认如下
 
@@ -84,7 +85,7 @@ sqlMapperPackage=mybatis_mapper
 ```
 * **执行 mybatisGenerate task** :
 ```shell
-./gradlew mybatisGenerate
+gradle mybatisGenerate
 ```
 
 #### 修改项目配置文件

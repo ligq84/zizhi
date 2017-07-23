@@ -6,7 +6,6 @@
         http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
         ">
 
-
     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
           destroy-method="close">
         <property name="poolProperties">

@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Created by chenkaihua on 15-12-23.
  */
+
 public class BaseService<Mapp extends Mapper<M>,M> implements  Mapper<M>{
 
 

@@ -22,12 +22,9 @@
 
 
 	<!-- 扫描注解，除去web层注解，web层注解在mvc配置中扫描 -->
-	<context:component-scan
-		base-package="com.zizhi.compoment,com.zizhi.service">
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.web.bind.annotation.RestController" />
+	<context:component-scan base-package="com.zizhi.compoment,com.zizhi.service">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController" />
 	</context:component-scan>
 
 	<!--测试环境用spring的datasource-->
@@ -60,7 +57,7 @@
 	
 
 	<!-- shiro安全模块定义 -->
-	<!-- <import resource="spring-shiro.xml" /> -->
+	 <import resource="spring-shiro.xml" />
 
 
 

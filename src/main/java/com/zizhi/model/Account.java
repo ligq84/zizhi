@@ -5,54 +5,45 @@ import javax.persistence.*;
 
 @Table(name = "usr_account")
 public class Account {
-    @Column(name = "account_Id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountId;
 
     /**
      * 公司Id
      */
-    @Column(name = "company_Id")
     private Integer companyId;
 
     /**
      * 手机号码
      */
-    @Column(name = "account_phone")
     private String accountPhone;
 
     /**
      * 用户名字
      */
-    @Column(name = "account_name")
     private String accountName;
 
     /**
      * 登录用户名字
      */
-    @Column(name = "account_login")
     private String accountLogin;
 
     /**
      * 登录密码
      */
-    @Column(name = "account_password")
     private String accountPassword;
 
     /**
      * 用户状态 0启用 1停用
      */
-    @Column(name = "account_status")
     private String accountStatus;
 
     /**
      * 创建时间
      */
-    @Column(name = "created_time")
     private Date createdTime;
 
     /**
-     * @return account_Id
+     * @return accountId
      */
     public Integer getAccountId() {
         return accountId;
@@ -68,7 +59,7 @@ public class Account {
     /**
      * 获取公司Id
      *
-     * @return company_Id - 公司Id
+     * @return companyId - 公司Id
      */
     public Integer getCompanyId() {
         return companyId;
@@ -86,7 +77,7 @@ public class Account {
     /**
      * 获取手机号码
      *
-     * @return account_phone - 手机号码
+     * @return accountPhone - 手机号码
      */
     public String getAccountPhone() {
         return accountPhone;
@@ -104,7 +95,7 @@ public class Account {
     /**
      * 获取用户名字
      *
-     * @return account_name - 用户名字
+     * @return accountName - 用户名字
      */
     public String getAccountName() {
         return accountName;
@@ -122,7 +113,7 @@ public class Account {
     /**
      * 获取登录用户名字
      *
-     * @return account_login - 登录用户名字
+     * @return accountLogin - 登录用户名字
      */
     public String getAccountLogin() {
         return accountLogin;
@@ -140,7 +131,7 @@ public class Account {
     /**
      * 获取登录密码
      *
-     * @return account_password - 登录密码
+     * @return accountPassword - 登录密码
      */
     public String getAccountPassword() {
         return accountPassword;
@@ -158,7 +149,7 @@ public class Account {
     /**
      * 获取用户状态 0启用 1停用
      *
-     * @return account_status - 用户状态 0启用 1停用
+     * @return accountStatus - 用户状态 0启用 1停用
      */
     public String getAccountStatus() {
         return accountStatus;
@@ -176,7 +167,7 @@ public class Account {
     /**
      * 获取创建时间
      *
-     * @return created_time - 创建时间
+     * @return createdTime - 创建时间
      */
     public Date getCreatedTime() {
         return createdTime;

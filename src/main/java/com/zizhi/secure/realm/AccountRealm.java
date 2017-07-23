@@ -2,7 +2,9 @@ package com.zizhi.secure.realm;
 
 import com.zizhi.jopo.UserPrincipal;
 import com.zizhi.model.Account;
+import com.zizhi.model.LoginLog;
 import com.zizhi.service.AccountService;
+import com.zizhi.service.LoginLogService;
 import org.apache.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -15,6 +17,8 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
+
 /**
  * @Auth liguoqiang
  * @Date 2017-7-13
@@ -25,7 +29,9 @@ public class AccountRealm extends AuthorizingRealm {
     private static Logger logger = Logger.getLogger(AccountRealm.class);
 
     @Autowired
-    private AccountService  accountService;
+    private AccountService accountService;
+    @Autowired
+    private LoginLogService loginLogService;
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
@@ -33,10 +39,9 @@ public class AccountRealm extends AuthorizingRealm {
         UserPrincipal userPrincipal = accountToken.getUserPrincipal();
         String pass = accountToken.getPassword();
         if(null!=userPrincipal && null != userPrincipal.getUsername()){
-
-            Account account  = accountService.selectAccountByName(userPrincipal.getUsername());
-            if(null != account){
-                String salt = account.getAccountId()+"#"+account.getCreatedTime();
+            Account account = accountService.getAccountByNameAndCompanyCode(userPrincipal.getUsername(),accountToken.getCompanyCode());
+            if(null != account ){
+                //String salt = account.getAccountId()+"#"+account.getCreatedTime();
                 //String encodedPassword =new Sha512Hash(accountToken.getPassword(), salt, 32).toBase64();
                 if(accountToken.getPassword().equals(account.getAccountPassword())){
                     SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo();
@@ -46,6 +51,13 @@ public class AccountRealm extends AuthorizingRealm {
                     authenticationInfo.setPrincipals(simplePrincipalCollection);
                     authenticationInfo.setCredentials(pass);
                     logger.info("认证成功!!! principalls:" + userPrincipal + " credentiasl:" + pass);
+                    LoginLog loginLog = new LoginLog();
+                    loginLog.setAccountLogin(account.getAccountLogin());
+                    loginLog.setAccountName(account.getAccountName());
+                    loginLog.setCompanyId(account.getCompanyId());
+                    loginLog.setLoginTime(new Date());
+                    loginLog.setLoginIp(accountToken.getIP());
+                    loginLogService.insertLoginLog(loginLog);
                     return authenticationInfo;
                 }
             }

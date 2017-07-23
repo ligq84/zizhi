@@ -5,11 +5,11 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="company_Id" jdbcType="INTEGER" property="companyId" />
-    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
-    <result column="company_code" jdbcType="VARCHAR" property="companyCode" />
+    <result column="companyId" jdbcType="INTEGER" property="companyId" />
+    <result column="companyName" jdbcType="VARCHAR" property="companyName" />
+    <result column="companyCode" jdbcType="VARCHAR" property="companyCode" />
     <result column="contacts" jdbcType="VARCHAR" property="contacts" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
   </resultMap>
 </mapper>

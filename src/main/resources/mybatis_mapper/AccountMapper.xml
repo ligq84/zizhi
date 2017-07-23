@@ -5,13 +5,14 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="account_Id" jdbcType="INTEGER" property="accountId" />
-    <result column="company_Id" jdbcType="INTEGER" property="companyId" />
-    <result column="account_phone" jdbcType="VARCHAR" property="accountPhone" />
-    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
-    <result column="account_login" jdbcType="VARCHAR" property="accountLogin" />
-    <result column="account_password" jdbcType="VARCHAR" property="accountPassword" />
-    <result column="account_status" jdbcType="VARCHAR" property="accountStatus" />
-    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="accountId" jdbcType="INTEGER" property="accountId" />
+    <result column="companyId" jdbcType="INTEGER" property="companyId" />
+    <result column="accountPhone" jdbcType="VARCHAR" property="accountPhone" />
+    <result column="accountName" jdbcType="VARCHAR" property="accountName" />
+    <result column="accountLogin" jdbcType="VARCHAR" property="accountLogin" />
+    <result column="accountPassword" jdbcType="VARCHAR" property="accountPassword" />
+    <result column="accountStatus" jdbcType="VARCHAR" property="accountStatus" />
+    <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
   </resultMap>
+
 </mapper>

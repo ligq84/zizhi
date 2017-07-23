@@ -3,6 +3,7 @@ package com.zizhi.controller.account;
 import com.zizhi.jopo.UserPrincipal;
 import com.zizhi.secure.realm.AccountToken;
 import com.zizhi.service.AccountService;
+import com.zizhi.utils.HttpUtils;
 import com.zizhi.utils.ValidateCodeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -17,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
@@ -37,12 +40,13 @@ public class AccountController {
     @RequestMapping("/login")
     public ModelAndView Login(@RequestParam String username, @RequestParam String password, @RequestParam String code,@RequestParam String companycode,
                               HttpServletRequest request){
-        ModelAndView modelAndView = new ModelAndView();
+            ModelAndView modelAndView = new ModelAndView();
+        Map<String,Object> result = new HashMap<String,Object>();
         AccountToken token = new AccountToken();
         String sessionCode = null == request.getSession(true).getAttribute("checkcode")?"":request.getSession(true).getAttribute("checkcode").toString();
         if (!StringUtils.equalsIgnoreCase(code, sessionCode)) {  //忽略验证码大小写
             modelAndView.setViewName("redirect:/login.jsp");
-            modelAndView.addObject("result","{\"mesg\":\"验证码对应不上！\"}");
+//;           modelAndView.addObject(result);
             return modelAndView;
         }
 
@@ -56,6 +60,7 @@ public class AccountController {
                 currentUser.logout();
             }
             try {
+                token.setIP(HttpUtils.getIpAddr(request));
                 currentUser.login(token);
                 // 如果认证成功，则增加request的属性，用于@CurrentUser注解使用
                 //Account account = token.getAccount();
@@ -63,12 +68,12 @@ public class AccountController {
             } catch (AuthenticationException e) {
                 logger.info("认证失败! "+e.getClass().getSimpleName());
                 modelAndView.setViewName("redirect:/login.jsp");
-                modelAndView.addObject("result","{\"mesg\":\"密码不对！\"}");
+                //modelAndView.addObject("result","{\"mesg\":\"密码不对！\"}");
             } catch (Exception e) {
                 logger.info("其他认证失败! "+e.getClass().getSimpleName());
                 e.printStackTrace();
                 modelAndView.setViewName("redirect:/login.jsp");
-                modelAndView.addObject("result","{\"mesg\":\"登录异常！\"}");
+                //modelAndView.addObject("result","{\"mesg\":\"登录异常！\"}");
             }
         }
 
@@ -91,4 +96,6 @@ public class AccountController {
         vCode.write(response.getOutputStream());
         request.getSession(true).setAttribute("checkcode", vCode.getCode());
     }
+
+
 }

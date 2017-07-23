@@ -5,8 +5,10 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import tk.mybatis.mapper.common.Mapper;
 
+import java.util.List;
+
 public interface AccountMapper extends Mapper<Account> {
-    @Select("SELECT a.* from usr_account a LEFT JOIN usr_company c ON a.company_Id = c.company_Id where c.company_code = #{companyCode}" +
-            " and a.account_login = #{name}")
-    Account selectAccountByName(@Param(value="name") String name,@Param(value="companyCode")  String companyCode);
+    @Select("SELECT a.* from usr_account a LEFT JOIN usr_company c ON a.companyId = c.companyId" +
+            " WHERE a.accountLogin=#{loginName} and c.companyCode=#{companyCode}")
+    List<Account> getAccountByNameAndCompanyCode(@Param("loginName") String loginName, @Param("companyCode") String companyCode);
 }

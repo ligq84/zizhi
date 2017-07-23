@@ -5,20 +5,16 @@ import javax.persistence.*;
 
 @Table(name = "usr_company")
 public class Company {
-    @Column(name = "company_Id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer companyId;
 
     /**
      * 公司名称
      */
-    @Column(name = "company_name")
     private String companyName;
 
     /**
      * 公司编码
      */
-    @Column(name = "company_code")
     private String companyCode;
 
     /**
@@ -34,11 +30,10 @@ public class Company {
     /**
      * 创建时间
      */
-    @Column(name = "created_time")
     private Date createdTime;
 
     /**
-     * @return company_Id
+     * @return companyId
      */
     public Integer getCompanyId() {
         return companyId;
@@ -54,7 +49,7 @@ public class Company {
     /**
      * 获取公司名称
      *
-     * @return company_name - 公司名称
+     * @return companyName - 公司名称
      */
     public String getCompanyName() {
         return companyName;
@@ -72,7 +67,7 @@ public class Company {
     /**
      * 获取公司编码
      *
-     * @return company_code - 公司编码
+     * @return companyCode - 公司编码
      */
     public String getCompanyCode() {
         return companyCode;
@@ -126,7 +121,7 @@ public class Company {
     /**
      * 获取创建时间
      *
-     * @return created_time - 创建时间
+     * @return createdTime - 创建时间
      */
     public Date getCreatedTime() {
         return createdTime;

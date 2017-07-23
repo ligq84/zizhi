@@ -5,42 +5,35 @@ import javax.persistence.*;
 
 @Table(name = "usr_login_log")
 public class LoginLog {
-    @Column(name = "log_Id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer logId;
 
     /**
      * 公司Id
      */
-    @Column(name = "company_Id")
     private Integer companyId;
 
     /**
      * 登录用户名
      */
-    @Column(name = "account_login")
     private String accountLogin;
 
     /**
      * 登录人
      */
-    @Column(name = "account_name")
     private String accountName;
 
     /**
      * 登录ip
      */
-    @Column(name = "login_Ip")
     private String loginIp;
 
     /**
      * 登录时间
      */
-    @Column(name = "login_time")
     private Date loginTime;
 
     /**
-     * @return log_Id
+     * @return logId
      */
     public Integer getLogId() {
         return logId;
@@ -56,7 +49,7 @@ public class LoginLog {
     /**
      * 获取公司Id
      *
-     * @return company_Id - 公司Id
+     * @return companyId - 公司Id
      */
     public Integer getCompanyId() {
         return companyId;
@@ -74,7 +67,7 @@ public class LoginLog {
     /**
      * 获取登录用户名
      *
-     * @return account_login - 登录用户名
+     * @return accountLogin - 登录用户名
      */
     public String getAccountLogin() {
         return accountLogin;
@@ -92,7 +85,7 @@ public class LoginLog {
     /**
      * 获取登录人
      *
-     * @return account_name - 登录人
+     * @return accountName - 登录人
      */
     public String getAccountName() {
         return accountName;
@@ -110,7 +103,7 @@ public class LoginLog {
     /**
      * 获取登录ip
      *
-     * @return login_Ip - 登录ip
+     * @return loginIp - 登录ip
      */
     public String getLoginIp() {
         return loginIp;
@@ -128,7 +121,7 @@ public class LoginLog {
     /**
      * 获取登录时间
      *
-     * @return login_time - 登录时间
+     * @return loginTime - 登录时间
      */
     public Date getLoginTime() {
         return loginTime;

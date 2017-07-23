@@ -1,13 +1,13 @@
 package com.zizhi.controller;
 
+import org.apache.log4j.Logger;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import javax.security.cert.CertificateException;
 import javax.security.cert.X509Certificate;
-
-import org.apache.log4j.Logger;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 
 @ControllerAdvice()
 public class ExceptionController {
@@ -17,7 +17,7 @@ public class ExceptionController {
 		trustSelfSignedSSL();
 	}
 
-
+	@SuppressWarnings("all")
 	private static void trustSelfSignedSSL() {
 		try {
 			SSLContext ctx = SSLContext.getInstance("TLS");

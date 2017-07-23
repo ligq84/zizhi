@@ -12,6 +12,7 @@
     <script src="/js/jquery-3.2.1.slim.min.js"></script>
 </head>
 <body>
+    <input type="hidden" id="mesg" value="${mesg}"/>
     <div class="container">
         <h2>趣逛科技资质管理系统</h2>
         <form action="/account/login" method="post" class="form-horizontal">
@@ -75,6 +76,13 @@
         }
         return url;
     }
+    function alertMesg(){
+       var mesg = $("#mesg").val();
+        if(null!= mesg &&mesg!=""){
+            alert(mesg)
+        }
+    }
+    alertMesg();
 </script>
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>

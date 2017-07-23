@@ -5,12 +5,12 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="operation_Id" jdbcType="INTEGER" property="operationId" />
-    <result column="company_Id" jdbcType="INTEGER" property="companyId" />
-    <result column="operation_module" jdbcType="VARCHAR" property="operationModule" />
-    <result column="operation_function" jdbcType="VARCHAR" property="operationFunction" />
-    <result column="operation_type" jdbcType="VARCHAR" property="operationType" />
-    <result column="operation_name" jdbcType="VARCHAR" property="operationName" />
-    <result column="operation_time" jdbcType="TIMESTAMP" property="operationTime" />
+    <result column="operationId" jdbcType="INTEGER" property="operationId" />
+    <result column="companyId" jdbcType="INTEGER" property="companyId" />
+    <result column="operationModule" jdbcType="VARCHAR" property="operationModule" />
+    <result column="operationFunction" jdbcType="VARCHAR" property="operationFunction" />
+    <result column="operationType" jdbcType="VARCHAR" property="operationType" />
+    <result column="operationName" jdbcType="VARCHAR" property="operationName" />
+    <result column="operationTime" jdbcType="TIMESTAMP" property="operationTime" />
   </resultMap>
 </mapper>

@@ -15,6 +15,7 @@ public class AccountToken implements AuthenticationToken {
 
     private String password;
     private String companyCode;
+    private String IP;
     private Account account;
 
     public AccountToken() {
@@ -86,5 +87,13 @@ public class AccountToken implements AuthenticationToken {
 
     public void setCompanyCode(String companyCode) {
         this.companyCode = companyCode;
+    }
+
+    public String getIP() {
+        return IP;
+    }
+
+    public void setIP(String IP) {
+        this.IP = IP;
     }
 }

@@ -42,29 +42,29 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>-->
 
-        <javaModelGenerator targetPackage="${modelPackage}" targetProject="${src_main_java}" />
+        <javaModelGenerator targetPackage="${modelPackage}" targetProject="${src_main_java}"/>
 
         <sqlMapGenerator targetPackage="${sqlMapperPackage}"  targetProject="${src_main_resources}"/>
 
         <javaClientGenerator targetPackage="${mapperPackage}" targetProject="${src_main_java}" type="XMLMAPPER" />
 
-        <!-- 这里是已经生成过的实体类 如果有新的实体类需要生成 请在注释外写，生成之后继续注释
+        <!-- 这里是已经生成过的实体类 如果有新的实体类需要生成 请在注释外写，生成之后继续注释  -->
         <table  tableName="usr_account"  domainObjectName="Account">
-            <property name="useActualColumnNames" value="false" />
+            <property name="useActualColumnNames" value="true" />
             <generatedKey column="account_Id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table  tableName="usr_company"  domainObjectName="Company">
-            <property name="useActualColumnNames" value="false" />
+            <property name="useActualColumnNames" value="true" />
             <generatedKey column="company_Id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table  tableName="usr_login_log"  domainObjectName="LoginLog">
-            <property name="useActualColumnNames" value="false" />
+            <property name="useActualColumnNames" value="true" />
             <generatedKey column="log_Id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table  tableName="usr_operation_log"  domainObjectName="OperationLog">
-            <property name="useActualColumnNames" value="false" />
+            <property name="useActualColumnNames" value="true" />
             <generatedKey column="operation_Id" sqlStatement="Mysql" identity="true"/>
         </table>
-         -->
+
     </context>
 </generatorConfiguration>

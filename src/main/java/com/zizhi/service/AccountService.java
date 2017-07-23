@@ -5,21 +5,27 @@ import com.zizhi.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
- * @Auth liguoqiang
- * @Date 2017-7-15
- * @Update
  * @UDate
  */
 @Service
-public class AccountService extends BaseService{
-
+public class AccountService{
     @Autowired
-    private AccountMapper accountMapper;
+    AccountMapper accountMapper;
 
-    //登录 根据公司编号和登录账号 查找用户信息
-    public Account selectAccountByName(String name,String companyCode){
-        return accountMapper.selectAccountByName(name,companyCode);
+    /**
+     * 根据公司编号和登录用户名 查询用户
+     * @param loginName
+     * @param companyCode
+     * @return
+     */
+    public Account getAccountByNameAndCompanyCode(String loginName,String companyCode){
+        List<Account> accountList = accountMapper.getAccountByNameAndCompanyCode(loginName,companyCode);
+        if(null != accountList && accountList.size()>0){
+            return accountList.get(0);
+        }
+        return null;
     }
-
 }
