@@ -1,5 +1,5 @@
 # ssm-easy-template
-
+http://usman.it/themes/charisma/
 ## 介绍
 **Ssm-Easy-Template** 是一个J2Ee项目快速开发脚手架，集成了最常用的框架,适用于`Restfull` 架构风格`Web Service`接口开发。项目使用最灵活的构建工具-`gradle`，加入了常用的gradle插件(`gretty`,`flydb`，`mybatis generator`),集成`swagger2`，`asciidoctor`，自动生成`rest api`文档。
 

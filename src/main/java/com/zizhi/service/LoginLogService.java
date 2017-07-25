@@ -18,6 +18,6 @@ public class LoginLogService{
     LoginLogMapper loginLogMapper;
 
     public void insertLoginLog(LoginLog loginLog){
-        loginLogMapper.insert(loginLog);
+        loginLogMapper.insertLoginLog(loginLog);
     }
 }
